@@ -5,6 +5,7 @@ pool:
   name: Default              
   demands:
     - Agent.Name -equals ip-172-31-36-189  
+
 variables:
 - group: aws-credentials
 - name: STAGE
@@ -16,27 +17,15 @@ steps:
 - checkout: self
   clean: true  
 
-# ✅ Install Node.js 18 (your template should use dnf and match EC2 setup)
+# ✅ Install Node.js 18
 - template: install_nodejs.yml
   parameters:
     version: '18'
 
-# ✅ Install Serverless CLI (from your `install_serverless.yml`)
+# ✅ Install Serverless CLI
 - template: install_serverless.yml
 
-# ✅ Build & Deploy backend
-- script: |
-    set -euo pipefail
-    cd backend
-    npm install
-    npx serverless deploy --stage $(STAGE) --region $(AWS_REGION) --verbose
-  displayName: Build & Deploy (Serverless)
-
-  env:
-    AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
-    AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
-    # AWS_SESSION_TOKEN: $(AWS_SESSION_TOKEN)
-    AWS_REGION: $(AWS_REGION)
+# ✅ 🔍 Check versions AFTER installing tools
 - script: |
     echo "Checking installed versions:"
     sls -v
@@ -44,3 +33,17 @@ steps:
     npm -v
     npx -v
   displayName: Show tool versions
+
+# ✅ Build & Deploy backend
+- script: |
+    set -euo pipefail
+    cd backend
+    npm install
+    npx serverless deploy --stage $(STAGE) --region $(AWS_REGION) --verbose --force
+  displayName: Build & Deploy (Serverless)
+
+  env:
+    AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
+    AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
+    # AWS_SESSION_TOKEN: $(AWS_SESSION_TOKEN)
+    AWS_REGION: $(AWS_REGION)
