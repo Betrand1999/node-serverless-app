@@ -1,20 +1,51 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+npx serverless remove
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+TypeScript is a superset of JavaScript created by Microsoft.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+npx is a command-line tool that comes with npm (since npm v5.2.0).
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+It lets you run Node.js packages without installing them globally.
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+
+sls --version
+#####################################################################
+
+
+Serverless Deployment Command
+| Tool / Command                   | Purpose                                    | Required?   | Usage / Version Check                         |
+| -------------------------------- | ------------------------------------------ | ----------- | --------------------------------------------- |
+| **Node.js**                      | JavaScript runtime                         | ✅ Yes       | `node -v`                                     |
+| **npm**                          | Package manager (comes with Node.js)       | ✅ Yes       | `npm -v`                                      |
+| **npx**                          | Runs CLI tools from local `node_modules`   | ✅ Yes       | `npx -v`                                      |
+| **Serverless Framework (`sls`)** | Deploy & manage AWS Lambda functions       | ✅ Yes       | `sls --version` or `npx serverless --version` |
+| **TypeScript**                   | Compile `.ts` files to `.js`               | ✅ Yes       | `npx tsc -v`                                  |
+| **Deploy Command**               | Deploys your Node.js app to AWS Lambda     | ✅ Yes       | `npx serverless deploy` or `sls deploy`       |
+| **Offline Command**              | Runs Lambda/API locally for testing        | 🔄 Optional | `npx serverless offline`                      |
+| **Remove Command**               | Removes deployed services from AWS         | 🔄 Optional | `npx serverless remove`                       |
+| **Audit & Fix Dependencies**     | Fixes security issues or outdated packages | 🔄 Optional | `npm audit` and `npm audit fix`               |
+############################################################################################
+| File / Folder           | Purpose                                                                    | Required?   | Notes                                                                |
+| ----------------------- | -------------------------------------------------------------------------- | ----------- | -------------------------------------------------------------------- |
+| **`handler.ts`**        | Lambda function entry point written in TypeScript                          | ✅ Yes       | Exports functions (e.g. `hello`) that AWS Lambda will invoke         |
+| **`serverless.yml`**    | Main config file for the Serverless Framework                              | ✅ Yes       | Defines service name, AWS settings, functions, events, plugins, etc. |
+| **`tsconfig.json`**     | TypeScript compiler settings                                               | ✅ Yes       | Controls how TypeScript compiles your code                           |
+| **`package.json`**      | Project metadata & npm dependencies                                        | ✅ Yes       | Used by npm to track packages and scripts                            |
+| **`node_modules/`**     | Folder containing all installed npm packages                               | ✅ Yes       | Auto-generated when you run `npm install`                            |
+| **`.serverless/`**      | Serverless build artifacts (auto-generated on deploy)                      | 🔄 Optional | Created by Serverless during `deploy`, used for packaging            |
+| **`package-lock.json`** | Locked versions of installed npm packages                                  | 🔄 Optional | Ensures consistent installs across environments                      |
+| **`.gitignore`**        | Lists files/folders to exclude from version control (like `node_modules/`) | 🔄 Optional | Helps keep your Git repo clean                                       |
+| **`.env`**              | Stores environment variables (if used)                                     | 🔄 Optional | Not used by default — optional for secrets or config                 |
+
+
+
+ cd frontend
+npx serve .
+####
+webpack.config.js
+
+This is a build/bundling config for the serverless-webpack plugin.
+
+It tells Webpack how to compile/package your code before deployment.
+### 
+jq is a command-line JSON processor
+##
