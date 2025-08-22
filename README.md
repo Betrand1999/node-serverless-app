@@ -67,3 +67,10 @@ usermod -aG wheel azureagent
 aws s3 sync ./s3-frontend s3://frontend-bucketasw --delete
 
 t syncs the contents of your local folder (./s3-frontend) to the S3 bucket (frontend-bucketasw), and removes anything from the bucket that no longer exists locally.
+
+
+######
+validation
+aws cloudfront create-invalidation \
+  --distribution-id E142RQOTX7CW7Z \
+  --paths "/index.html"
