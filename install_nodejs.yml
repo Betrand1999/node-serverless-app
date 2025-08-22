@@ -7,7 +7,7 @@ steps:
   - script: |
       if ! command -v node &>/dev/null || [ "$(node -v | cut -d. -f1 | tr -d 'v')" != "${{ parameters.version }}" ]; then
         echo "Installing Node.js ${{ parameters.version }} from NodeSource..."
-        curl -fsSL https://rpm.nodesource.com/setup_${{ parameters.version }}.x | sudo bash -
+        sudo yum install nodejs22
        
 
         sudo yum install -y nodejs
