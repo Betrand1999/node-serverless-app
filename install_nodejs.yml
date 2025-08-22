@@ -1,28 +1,15 @@
 parameters:
-  - name: version
+  version:
+    displayName: Check and install nodejs in selected version
     type: string
-    default: '18'
 
 steps:
   - script: |
-      set -euo pipefail
-
-      # Pick package manager for AL2/AL2023-style Linux agents
-      if command -v dnf >/dev/null 2>&1; then PM=dnf; else PM=yum; fi
-
-      CUR=$(node -v 2>/dev/null || echo "")
-      MAJOR=""
-      [ -n "$CUR" ] && MAJOR=$(echo "$CUR" | sed -E 's/^v([0-9]+).*/\1/')
-
-      if [ "$MAJOR" != "${{ parameters.version }}" ]; then
-        echo "Switching to Node.js ${{ parameters.version }}.x…"
-        sudo $PM remove -y nodejs nodejs20 nodejs22 || true
-        curl -fsSL https://rpm.nodesource.com/setup_${{ parameters.version }}.x | sudo bash -
-        sudo $PM install -y nodejs
+      if [ "$(node -v | sed -E 's/v([0-9]+)\..*/\1/')" != "${{ parameters.version }}" ]; then
+        sudo dnf module reset -y nodejs
+        sudo dnf module install -y nodejs:${{ parameters.version }}/common
+        sudo dnf module enable nodejs:${{ parameters.version }}/common
       else
-        echo "Node already $CUR"
+        echo "Nodejs version ${{ parameters.version }} is already installed."
       fi
-
-      node --version
-      npm --version
-    displayName: Ensure Node.js ${{ parameters.version }}.x
+    displayName: install nodejs ${{ parameters.version }}
