@@ -1,11 +1,10 @@
 trigger:
-- main  # Run this pipeline when pushing to main
+- main  
 
 pool:
-  name: Default               # Matches your agent pool
+  name: Default              
   demands:
-    - Agent.Name -equals ip-172-31-36-189  # Forces job to run on your EC2 agent
-
+    - Agent.Name -equals ip-172-31-36-189  
 variables:
 - group: aws-credentials
 - name: STAGE
@@ -15,7 +14,7 @@ variables:
 
 steps:
 - checkout: self
-  clean: true  # Clean workspace
+  clean: true  
 
 # ✅ Install Node.js 18 (your template should use dnf and match EC2 setup)
 - template: install_nodejs.yml
@@ -38,3 +37,10 @@ steps:
     AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
     # AWS_SESSION_TOKEN: $(AWS_SESSION_TOKEN)
     AWS_REGION: $(AWS_REGION)
+- script: |
+    echo "Checking installed versions:"
+    sls -v
+    node -v
+    npm -v
+    npx -v
+  displayName: Show tool versions
