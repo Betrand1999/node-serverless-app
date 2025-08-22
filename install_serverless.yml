@@ -1,12 +1,9 @@
-#!/bin/bash
-
-if ! command -v sls &>/dev/null; then
-  if ! yum list installed nodejs >/dev/null 2>&1; then
-    echo "Package nodejs is not installed. Installing nodejs20..."    # sudo yum install -y nodejs   # alternative if nodejs20 isn’t available
-    sudo yum install -y nodejs
-  fi
-
-  echo "Installing serverless framework..."
-  npm install -g serverless@2.72.3
-else
-  echo "Serverless framework is already installed. Skipping..."fi
+steps:
+  - script: |
+      set -euo pipefail
+      sudo npm i -g npm@latest
+      if ! command -v sls >/dev/null 2>&1; then
+        sudo npm i -g serverless@3
+      fi
+      sls -v | head -n1
+    displayName: Install Serverless CLI

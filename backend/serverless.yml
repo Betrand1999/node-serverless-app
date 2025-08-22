@@ -1,5 +1,4 @@
 service: node-serverless-project
-
 frameworkVersion: '3'
 
 provider:
@@ -11,9 +10,9 @@ functions:
   hello:
     handler: handler.hello
     events:
-      - http:
-          path: hello
-          method: get
+      - httpApi:
+          path: /hello
+          method: GET
 
 plugins:
   - serverless-plugin-typescript

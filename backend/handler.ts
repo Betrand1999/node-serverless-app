@@ -1,16 +1,10 @@
-// handler.ts
-import {
-  APIGatewayProxyEvent,
-  APIGatewayProxyResult,
-} from 'aws-lambda';
+import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 
 export const hello = async (
-  event: APIGatewayProxyEvent
+  _event: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> => {
   return {
     statusCode: 200,
-    body: JSON.stringify({
-      message: 'Hello from Lambda!',
-    }),
+    body: JSON.stringify({ message: 'Hello from Lambda (Node 18)!' })
   };
 };

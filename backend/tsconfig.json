@@ -5,9 +5,10 @@
       "lib": ["es2020"],
       "strict": true,
       "esModuleInterop": true,
-      "outDir": ".webpack",
-      "rootDir": "."
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "outDir": ".build"
     },
-    "exclude": ["node_modules"]
+    "include": ["handler.ts"]
   }
   

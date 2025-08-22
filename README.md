@@ -48,4 +48,16 @@ This is a build/bundling config for the serverless-webpack plugin.
 It tells Webpack how to compile/package your code before deployment.
 ### 
 jq is a command-line JSON processor
-##
+#############################
+install agent in azure 
+Step 1: Install the required dependencies
+sudo yum install -y libicu
+sudo dnf install -y libicu
+##############################
+
+✅ 1. Create a New User
+useradd -m -s /bin/bash azureagent
+passwd azureagent
+usermod -aG wheel azureagent
+%wheel  ALL=(ALL)       ALL
+%wheel  ALL=(ALL)       ALL
