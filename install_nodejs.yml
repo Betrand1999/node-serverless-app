@@ -7,9 +7,9 @@ parameters:
 steps:
   - script: |
       if [ "$(node -v | sed -E 's/v([0-9]+)\..*/\1/')" != "${{ parameters.version }}" ]; then
-        dnf module reset -y nodejs
-        dnf module install -y nodejs:${{ parameters.version }}/common
-        dnf module enable nodejs:${{ parameters.version }}/common
+        sudo dnf module reset -y nodejs
+        sudo dnf module install -y nodejs:${{ parameters.version }}/common
+        sudo dnf module enable nodejs:${{ parameters.version }}/common
       else
         echo "Nodejs version ${{ parameters.version }} is already installed."
       fi
