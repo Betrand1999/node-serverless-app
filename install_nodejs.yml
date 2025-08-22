@@ -7,9 +7,9 @@ parameters:
 steps:
   - script: |
       if [ "$(node -v | sed -E 's/v([0-9]+)\..*/\1/')" != "${{ parameters.version }}" ]; then
-        yum module reset -y nodejs
-        yum module install -y nodejs:${{ parameters.version }}/common
-        yum module enable nodejs:${{ parameters.version }}/common
+        dnf module reset -y nodejs
+        dnf module install -y nodejs:${{ parameters.version }}/common
+        dnf module enable nodejs:${{ parameters.version }}/common
       else
         echo "Nodejs version ${{ parameters.version }} is already installed."
       fi
