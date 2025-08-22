@@ -1,8 +1,7 @@
 parameters:
-  version:
-    type: string
-    default: '18'  # 👈 Default to Node.js 18 if not provided
+  - name: version
     displayName: Check and install nodejs in selected version
+    type: string
 
 steps:
   - script: |

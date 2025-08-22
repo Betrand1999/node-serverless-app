@@ -1,14 +1,13 @@
-- script: |
-    if ! command -v sls &>/dev/null; then
-      if ! command -v node &>/dev/null; then
-        echo "Node.js is not installed. Installing Node.js 18..."
-        curl -fsSL https://rpm.nodesource.com/setup_18.x | bash -
-        yum install -y nodejs
+steps:
+  - script: |
+      if ! command -v sls &>/dev/null; then
+        if ! yum list installed nodejs >/dev/null 2>&1; then
+          echo "Package nodejs is not installed. Installing nodejs first..."
+          sudo yum install -y nodejs
+        fi
+        echo "Installing serverless framework..."
+        npm install -g serverless@2.72.3
+      else
+        echo "Serverless framework is already installed. Skipping..."
       fi
-      echo "Installing Serverless Framework..."
-      npm install -g serverless@2.72.3
-    else
-      echo "Serverless framework is already installed. Skipping..."
-    fi
-  displayName: Install Serverless Framework
-####
+    displayName: Install Serverless Framework
