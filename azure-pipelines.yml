@@ -2,7 +2,10 @@ trigger:
 - main
 
 pool:
-  name:  default
+  name: Default
+  demands:
+    - Agent.Name -equals ip-172-31-36-189
+
   
 
 variables:
