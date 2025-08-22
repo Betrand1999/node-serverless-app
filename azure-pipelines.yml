@@ -2,13 +2,16 @@ trigger:
 - main
 
 pool:
-  name: Self-Hosted
+  name: default
   demands:
   - Agent.Name -equals 1723136189
 
 variables:
-  STAGE: dev
-  AWS_REGION: us-east-1
+- group: aws-credentials   # ✅ Link the AWS credentials variable group
+- name: STAGE
+  value: dev
+- name: AWS_REGION
+  value: us-east-1
 
 steps:
 - checkout: self
