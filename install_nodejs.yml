@@ -1,13 +1,15 @@
 parameters:
   - name: version
     type: string
-    default: '18'
+    default: '22'
 
 steps:
   - script: |
       if ! command -v node &>/dev/null || [ "$(node -v | cut -d. -f1 | tr -d 'v')" != "${{ parameters.version }}" ]; then
         echo "Installing Node.js ${{ parameters.version }} from NodeSource..."
         curl -fsSL https://rpm.nodesource.com/setup_${{ parameters.version }}.x | sudo bash -
+       
+
         sudo yum install -y nodejs
       else
         echo "Node.js ${{ parameters.version }} is already installed."
