@@ -2,7 +2,7 @@ trigger:
 - main
 
 pool:
-  name: default
+  name:  Self-Hosted
   demands:
   - Agent.Name -equals 1723136189
 
