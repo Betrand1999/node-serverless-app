@@ -6,7 +6,7 @@ steps:
           sudo yum install -y nodejs
         fi
         echo "Installing serverless framework..."
-        npm install -g serverless@2.72.3
+        sudo npm install -g serverless@2.72.3
       else
         echo "Serverless framework is already installed. Skipping..."
       fi
