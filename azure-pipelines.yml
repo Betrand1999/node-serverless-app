@@ -4,7 +4,7 @@ trigger:
 pool:
   name: Default              
   demands:
-    - Agent.Name -equals ip-172-31-36-189  
+     - Agent.Name -equals ip-172-31-44-103
 
 variables:
 - group: aws-credentials
