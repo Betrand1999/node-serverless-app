@@ -13,6 +13,7 @@ functions:
       - httpApi:
           path: /hello
           method: GET
+          cors: true   # ✅ Enables CORS so frontend can access Lambda
 
 plugins:
   - serverless-plugin-typescript
