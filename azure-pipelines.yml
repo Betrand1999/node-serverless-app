@@ -32,12 +32,25 @@ steps:
 
 # ✅ Show tool versions
 - script: |
-    echo "Checking installed versions:"
+    echo "======================================="
+    echo "✅ Tool Versions in This Pipeline Run"
+    echo "======================================="
+    
+    echo "➡ Serverless CLI Version:"
     sls -v
+    
+    echo "➡ Node.js Version:"
     node -v
+    
+    echo "➡ npm Version:"
     npm -v
+    
+    echo "➡ npx Version:"
     npx -v
+    
+    echo "======================================="
   displayName: Show tool versions
+
 
 # ✅ Build & Deploy backend
 - script: |
