@@ -61,3 +61,9 @@ passwd azureagent
 usermod -aG wheel azureagent
 %wheel  ALL=(ALL)       ALL
 %wheel  ALL=(ALL)       ALL
+
+
+######
+aws s3 sync ./s3-frontend s3://frontend-bucketasw --delete
+
+t syncs the contents of your local folder (./s3-frontend) to the S3 bucket (frontend-bucketasw), and removes anything from the bucket that no longer exists locally.
