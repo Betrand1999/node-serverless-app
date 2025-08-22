@@ -17,6 +17,11 @@ steps:
 - checkout: self
   clean: true  
 
+# ✅ Show current branch to confirm trigger
+- script: |
+    echo "Running on branch: $(Build.SourceBranch)"
+  displayName: Show Git Branch
+
 # ✅ Install Node.js 18
 - template: install_nodejs.yml
   parameters:
@@ -25,7 +30,7 @@ steps:
 # ✅ Install Serverless CLI
 - template: install_serverless.yml
 
-# ✅ 🔍 Check versions AFTER installing tools
+# ✅ Show tool versions
 - script: |
     echo "Checking installed versions:"
     sls -v
