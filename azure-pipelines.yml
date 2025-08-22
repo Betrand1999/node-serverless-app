@@ -58,13 +58,9 @@ steps:
     cd backend
     npm install
 
-    # === 🚀 Deploy Serverless Stack ===
-    # Uncomment the line below to enable deployment
-    # npx serverless deploy --stage $(STAGE) --region $(AWS_REGION) --verbose --force
-
-    # === 🧹 Remove Serverless Stack ===
-    # Uncomment the line below to enable removal
-      npx serverless remove --stage $(STAGE) --region $(AWS_REGION)
+   
+      npx serverless deploy --stage $(STAGE) --region $(AWS_REGION) --verbose --force
+    # npx serverless remove --stage $(STAGE) --region $(AWS_REGION)
   displayName: Deploy or Remove Serverless Stack
 
   env:
