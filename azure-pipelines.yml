@@ -1,15 +1,13 @@
 trigger:
-- main
+- main  # Run this pipeline when pushing to main
 
 pool:
-  name: Default
+  name: Default               # Matches your agent pool
   demands:
-    - Agent.Name -equals ip-172-31-36-189
-
-  
+    - Agent.Name -equals ip-172-31-36-189  # Forces job to run on your EC2 agent
 
 variables:
-- group: aws-credentials   # ✅ Link the AWS credentials variable group
+- group: aws-credentials
 - name: STAGE
   value: dev
 - name: AWS_REGION
@@ -17,17 +15,17 @@ variables:
 
 steps:
 - checkout: self
-  clean: true
+  clean: true  # Clean workspace
 
-# Ensure Node 18 on the agent
+# ✅ Install Node.js 18 (your template should use dnf and match EC2 setup)
 - template: install_nodejs.yml
   parameters:
     version: '18'
 
-# Install Serverless CLI
+# ✅ Install Serverless CLI (from your `install_serverless.yml`)
 - template: install_serverless.yml
 
-# Build & Deploy the backend
+# ✅ Build & Deploy backend
 - script: |
     set -euo pipefail
     cd backend
