@@ -29,3 +29,11 @@ steps:
         echo "Nodejs version ${{ parameters.version }} is already installed."
       fi
     displayName: install nodejs ${{ parameters.version }}
+# It checks the installed Node major version against your parameters.version
+# If Node is missing or not the same major (e.g., 16 when you asked for 18), the if condition is true and it goes into the install block.
+
+# If not installed, does it clean up and then install?
+# It runs dnf module reset nodejs, which resets the module stream selection, but does not uninstall an already-installed nodejs RPM
+
+########################## Simple term ##################
+# for this to pas there must be a node install. 
