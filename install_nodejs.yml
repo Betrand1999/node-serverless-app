@@ -7,7 +7,7 @@ steps:
   - script: |
       if ! command -v node &>/dev/null || [ "$(node -v | cut -d. -f1 | tr -d 'v')" != "${{ parameters.version }}" ]; then
         echo "Installing Node.js ${{ parameters.version }} via yum..."
-        sudo yum install -y nodejs18
+        sudo yum install -y nodejs
       else
         echo "Node.js ${{ parameters.version }} is already installed."
       fi
