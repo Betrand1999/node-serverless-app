@@ -1,14 +1,31 @@
+# parameters:
+#   - name: version
+#     type: string
+#     default: '18'
+
+# steps:
+#   - script: |
+#       if ! command -v node &>/dev/null || [ "$(node -v | cut -d. -f1 | tr -d 'v')" != "${{ parameters.version }}" ]; then
+#         echo "Installing Node.js ${{ parameters.version }} via yum..."
+#         sudo yum install -y nodejs
+#       else
+#         echo "Node.js ${{ parameters.version }} is already installed."
+#       fi
+#     displayName: Install Node.js ${{ parameters.version }} (RHEL direct)
+
+
 parameters:
   - name: version
+    displayName: Choose and install nodejs in selected version
     type: string
-    default: '18'
 
 steps:
   - script: |
-      if ! command -v node &>/dev/null || [ "$(node -v | cut -d. -f1 | tr -d 'v')" != "${{ parameters.version }}" ]; then
-        echo "Installing Node.js ${{ parameters.version }} via yum..."
-        sudo yum install -y nodejs
+      if [ "$(node -v | sed -E 's/v([0-9]+)\..*/\1/')" != "${{ parameters.version }}" ]; then
+        sudo dnf module reset -y nodejs
+        sudo dnf module install -y nodejs:${{ parameters.version }}/common
+        sudo dnf module enable nodejs:${{ parameters.version }}/common
       else
-        echo "Node.js ${{ parameters.version }} is already installed."
+        echo "Nodejs version ${{ parameters.version }} is already installed."
       fi
-    displayName: Install Node.js ${{ parameters.version }} (RHEL direct)
+    displayName: install nodejs ${{ parameters.version }}
