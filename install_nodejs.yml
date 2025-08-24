@@ -1,13 +1,13 @@
 parameters:
   - name: version
     type: string
-    default: '18'
+    default: '22'
 
 steps:
   - script: |
       if ! command -v node &>/dev/null || [ "$(node -v | cut -d. -f1 | tr -d 'v')" != "${{ parameters.version }}" ]; then
         echo "Installing Node.js ${{ parameters.version }} via yum..."
-        sudo yum install -y nodejs18
+        sudo yum install -y nodejs22
       else
         echo "Node.js ${{ parameters.version }} is already installed."
       fi
