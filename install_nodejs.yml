@@ -1,7 +1,7 @@
 parameters:
   - name: version
     type: string
-    default: '22'
+    default: '18'
 
 steps:
   - script: |
