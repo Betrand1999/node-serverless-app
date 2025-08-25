@@ -74,3 +74,14 @@ validation
 aws cloudfront create-invalidation \
   --distribution-id E142RQOTX7CW7Z \
   --paths "/index.html"
+######
+1. Node.js
+Core Tools You Need on the Build Agent (e.g., ADO Pipeline Runner)
+Yes, you must install Node.js. This will also install npm automatically (Node Package Manager).
+
+2. npm
+
+3. serverless Framework (sls)
+You can install globally (npm install -g serverless) or locally and run with npx.
+It’s the core tool to deploy your app to Lambda.
+4. npx

@@ -1,17 +1,3 @@
-# steps:
-#   - script: |
-#       if ! command -v sls &>/dev/null; then
-#         if ! yum list installed nodejs >/dev/null 2>&1; then
-#           echo "Node.js is not installed. Installing nodejs..."
-#           sudo yum install -y nodejs
-#         fi
-#         echo "Installing Serverless Framework via npm..."
-#         sudo npm install -g serverless@2.72.3
-#       else
-#         echo "Serverless framework is already installed. Skipping..."
-#       fi
-#     displayName: Install Serverless Framework
-
 steps:
   - script: |
       if ! command -v sls &>/dev/null; then
