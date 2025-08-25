@@ -1,28 +1,4 @@
-# parameters:
-#   - name: version
-#     displayName: Choose and install nodejs in selected version
-#     type: string
-
-# steps:
-#   - script: |
-#       if [ "$(node -v | sed -E 's/v([0-9]+)\..*/\1/')" != "${{ parameters.version }}" ]; then
-#         sudo dnf module reset -y nodejs
-#         sudo dnf module install -y nodejs:${{ parameters.version }}/common
-#         sudo dnf module enable nodejs:${{ parameters.version }}/common
-#       else
-#         echo "Nodejs version ${{ parameters.version }} is already installed."
-#       fi
-#     displayName: install nodejs ${{ parameters.version }}
-###############################################
-# It checks the installed Node major version against your parameters.version
-# If Node is missing or not the same major (e.g., 16 when you asked for 18), the if condition is true and it goes into the install block.
-
-# If not installed, does it clean up and then install?
-# It runs dnf module reset nodejs, which resets the module stream selection, but does not uninstall an already-installed nodejs RPM
-
-########################## Simple term ##################
-# for this to pas there must be a node install. 
-#######################
+###################### 18 #################
 parameters:
   - name: version
     displayName: Choose and install nodejs in selected version
@@ -43,3 +19,4 @@ steps:
         echo "Node.js version ${{ parameters.version }} is already installed."
       fi
     displayName: Install Node.js ${{ parameters.version }}
+###################### 18 #################

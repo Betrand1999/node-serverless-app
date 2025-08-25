@@ -5,6 +5,6 @@ export const hello = async (
 ): Promise<APIGatewayProxyResult> => {
   return {
     statusCode: 200,
-    body: JSON.stringify({ message: 'Hello from Lambda (Node 18)! Successfully deploy' })
+    body: JSON.stringify({ message: 'Hello from Lambda (Node 18)! Successfully deploy Good Job' })
   };
 };
