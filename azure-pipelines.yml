@@ -1,68 +1,72 @@
 trigger:
-- main  
+  - main  
 
 pool:
   name: Default              
   demands:
-     - Agent.Name -equals ip-172-31-44-103
+    - Agent.Name -equals ip-172-31-44-103
 
 variables:
-- group: aws-credentials
-- name: STAGE
-  value: dev
-- name: AWS_REGION
-  value: us-east-1
+  - group: aws-credentials
+
+  - name: STAGE
+    value: dev
+
+  - name: AWS_REGION
+    value: us-east-1
 
 steps:
-- checkout: self
-  clean: true  
+  # ✅ Checkout source code
+  - checkout: self
+    clean: true  
 
+  # ✅ Show Git branch name
+  - script: |
+      echo "Running on branch: $(Build.SourceBranch)"
+    displayName: Show Git Branch
 
-- script: |
-    echo "Running on branch: $(Build.SourceBranch)"
-  displayName: Show Git Branch
+  # ✅ Install Node.js
+  - template: install_nodejs.yml
+    parameters:
+      version: '18'
 
-- template: install_nodejs.yml
-  parameters:
-    version: '18'
+  # ✅ Install Serverless CLI
+  - template: install_serverless.yml
 
-# ✅ Install Serverless CLI
-- template: install_serverless.yml
+  # ✅ Show tool versions
+  - script: |
+      echo "======================================="
+      echo "✅ Tool Versions in This Pipeline Run"
+      echo "======================================="
+      
+      echo "➡ Serverless CLI Version:"
+      sls -v
+      
+      echo "➡ Node.js Version:"
+      node -v
+      
+      echo "➡ npm Version:"
+      npm -v
+      
+      echo "➡ npx Version:"
+      npx -v
+      
+      echo "======================================="
+    displayName: Show tool versions
 
-# ✅ Show tool versions
-- script: |
-    echo "======================================="
-    echo "✅ Tool Versions in This Pipeline Run"
-    echo "======================================="
-    
-    echo "➡ Serverless CLI Version:"
-    sls -v
-    
-    echo "➡ Node.js Version:"
-    node -v
-    
-    echo "➡ npm Version:"
-    npm -v
-    
-    echo "➡ npx Version:"
-    npx -v
-    
-    echo "======================================="
-  displayName: Show tool versions
+  # ✅ Build & Deploy backend using Serverless
+  - script: |
+      set -euo pipefail
+      cd backend
+      npm install
 
-
-# ✅ Build & Deploy backend
-- script: |
-    set -euo pipefail
-    cd backend
-    npm install
-
-   
       npx serverless deploy --stage $(STAGE) --region $(AWS_REGION) --verbose --force
-    # npx serverless remove --stage $(STAGE) --region $(AWS_REGION)
-  displayName: Deploy or Remove Serverless Stack
+      # npx serverless remove --stage $(STAGE) --region $(AWS_REGION)
+    displayName: Deploy or Remove Serverless Stack
 
-  env:
-    AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
-    AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
-    AWS_REGION: $(AWS_REGION)
+    timeoutInMinutes: 3
+
+    env:
+      AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
+      AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
+      AWS_REGION: $(AWS_REGION)
