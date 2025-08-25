@@ -1,4 +1,3 @@
-###################### 18 #################
 parameters:
   - name: version
     displayName: Choose and install nodejs in selected version
@@ -6,17 +5,12 @@ parameters:
 
 steps:
   - script: |
-      # Check if node exists and if the version matches
-      if ! command -v node >/dev/null 2>&1 || [ "$(node -v | sed -E 's/v([0-9]+)\..*/\1/')" != "${{ parameters.version }}" ]; then
-        echo "Installing Node.js version ${{ parameters.version }}..."
-
+      if [ "$(node -v | sed -E 's/v([0-9]+)\..*/\1/')" != "${{ parameters.version }}" ]; then
         sudo dnf module reset -y nodejs
-        sudo dnf module enable -y nodejs:${{ parameters.version }}/common
         sudo dnf module install -y nodejs:${{ parameters.version }}/common
-
-        echo "Node.js version ${{ parameters.version }} installed."
+        sudo dnf module enable nodejs:${{ parameters.version }}/common
       else
-        echo "Node.js version ${{ parameters.version }} is already installed."
+        echo "Nodejs version ${{ parameters.version }} is already installed."
       fi
-    displayName: Install Node.js ${{ parameters.version }}
-###################### 18 #################
+    displayName: install nodejs ${{ parameters.version }}
+
