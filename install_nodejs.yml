@@ -38,8 +38,8 @@ steps:
         sudo dnf module enable -y nodejs:${{ parameters.version }}/common
         sudo dnf module install -y nodejs:${{ parameters.version }}/common
 
-        echo "✅ Node.js version ${{ parameters.version }} installed."
+        echo "Node.js version ${{ parameters.version }} installed."
       else
-        echo "✅ Node.js version ${{ parameters.version }} is already installed."
+        echo "Node.js version ${{ parameters.version }} is already installed."
       fi
     displayName: Install Node.js ${{ parameters.version }}
