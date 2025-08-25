@@ -1,18 +1,19 @@
-parameters:
-  - name: version
-    displayName: Choose and install nodejs in selected version
-    type: string
+# parameters:
+#   - name: version
+#     displayName: Choose and install nodejs in selected version
+#     type: string
 
-steps:
-  - script: |
-      if [ "$(node -v | sed -E 's/v([0-9]+)\..*/\1/')" != "${{ parameters.version }}" ]; then
-        sudo dnf module reset -y nodejs
-        sudo dnf module install -y nodejs:${{ parameters.version }}/common
-        sudo dnf module enable nodejs:${{ parameters.version }}/common
-      else
-        echo "Nodejs version ${{ parameters.version }} is already installed."
-      fi
-    displayName: install nodejs ${{ parameters.version }}
+# steps:
+#   - script: |
+#       if [ "$(node -v | sed -E 's/v([0-9]+)\..*/\1/')" != "${{ parameters.version }}" ]; then
+#         sudo dnf module reset -y nodejs
+#         sudo dnf module install -y nodejs:${{ parameters.version }}/common
+#         sudo dnf module enable nodejs:${{ parameters.version }}/common
+#       else
+#         echo "Nodejs version ${{ parameters.version }} is already installed."
+#       fi
+#     displayName: install nodejs ${{ parameters.version }}
+###############################################
 # It checks the installed Node major version against your parameters.version
 # If Node is missing or not the same major (e.g., 16 when you asked for 18), the if condition is true and it goes into the install block.
 
@@ -21,3 +22,24 @@ steps:
 
 ########################## Simple term ##################
 # for this to pas there must be a node install. 
+#######################
+parameters:
+  - name: version
+    displayName: Choose and install nodejs in selected version
+    type: string
+
+steps:
+  - script: |
+      # Check if node exists and if the version matches
+      if ! command -v node >/dev/null 2>&1 || [ "$(node -v | sed -E 's/v([0-9]+)\..*/\1/')" != "${{ parameters.version }}" ]; then
+        echo "Installing Node.js version ${{ parameters.version }}..."
+
+        sudo dnf module reset -y nodejs
+        sudo dnf module enable -y nodejs:${{ parameters.version }}/common
+        sudo dnf module install -y nodejs:${{ parameters.version }}/common
+
+        echo "✅ Node.js version ${{ parameters.version }} installed."
+      else
+        echo "✅ Node.js version ${{ parameters.version }} is already installed."
+      fi
+    displayName: Install Node.js ${{ parameters.version }}
