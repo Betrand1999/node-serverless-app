@@ -85,3 +85,8 @@ Yes, you must install Node.js. This will also install npm automatically (Node Pa
 You can install globally (npm install -g serverless) or locally and run with npx.
 It’s the core tool to deploy your app to Lambda.
 4. npx
+#####
+sudo dnf module reset -y nodejs
+sudo dnf module enable -y nodejs:18
+sudo dnf module reset -y nodejs always resets the module state back to neutral, regardless of what’s installed at the moment.
+dnf module list nodejs
