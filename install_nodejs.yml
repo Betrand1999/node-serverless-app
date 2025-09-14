@@ -23,6 +23,7 @@ steps:
 # Error: Problems in request:
 # missing groups or modules: nodejs:18/common but system's dnf module repo doesn't have nodejs:18 available.
 # it's about your OS not having Node.js 18 available through dnf module at all.
+# Node.js 22 is not available as a DNF module stream on Red Hat Enterprise Linux (RHE
 ################## Demo is working good ####################################
 
 
