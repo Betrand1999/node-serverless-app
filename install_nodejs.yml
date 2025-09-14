@@ -13,6 +13,7 @@ steps:
         # sudo dnf module enable nodejs:${{ parameters.version }}/common
         curl -fsSL https://rpm.nodesource.com/setup_${{ parameters.version }}.x | sudo bash -
         sudo yum install -y nodejs
+        sudo node -v
 
       else
         echo "Nodejs version ${{ parameters.version }} is already installed."
