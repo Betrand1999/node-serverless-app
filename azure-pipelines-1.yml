@@ -6,17 +6,17 @@ pool:
 
 steps:
   - script: |
-      echo "✅ Step 1: Setup"
+      echo "✅ Step 1: Check Node.js"
       node -v
-    displayName: Check Node Version
+    displayName: Check Node.js
 
   - script: |
-      echo "⬇️ Step 2: Install Serverless CLI"
+      echo "⬇️ Step 2: Install Serverless"
       npm install -g serverless
     displayName: Install Serverless
 
   - script: |
       echo "🧪 Step 3: Deploying Lambda"
-      set -e  # Exit immediately if a command fails
+      set -e
       sls deploy --stage dev
     displayName: Deploy Lambda
