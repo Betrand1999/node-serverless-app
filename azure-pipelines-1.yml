@@ -1,0 +1,21 @@
+trigger:
+  - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  - script: |
+      echo "Step 1: Checking environment..."
+      node -v
+    displayName: Check Node Version
+
+  - script: |
+      echo "Step 2: Running faulty logic"
+      notarealcommand
+      echo "You won't see this line"
+    displayName: Run Bad Command
+
+  - script: |
+      echo "Step 3: This step should not run if previous failed"
+    displayName: Should Be Skipped
