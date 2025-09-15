@@ -6,16 +6,16 @@ pool:
 
 steps:
   - script: |
-      echo "Step 1: Checking environment..."
+      echo "Checking node version"
       node -v
-    displayName: Check Node Version
+    displayName: Check Node
 
   - script: |
-      echo "Step 2: Running faulty logic"
-      notarealcommand
-      echo "You won't see this line"
-    displayName: Run Bad Command
+      echo "About to fail"
+      invalidcommand
+      echo "Should not be seen"
+    displayName: Fail Intentionally
 
   - script: |
-      echo "Step 3: This step should not run if previous failed"
+      echo "This should NOT run"
     displayName: Should Be Skipped
