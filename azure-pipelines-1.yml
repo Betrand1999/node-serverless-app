@@ -6,16 +6,17 @@ pool:
 
 steps:
   - script: |
-      echo "Checking node version"
+      echo "✅ Step 1: Setup"
       node -v
-    displayName: Check Node
+    displayName: Check Node Version
 
   - script: |
-      echo "About to fail"
-      invalidcommand
-      echo "Should not be seen"
-    displayName: Fail Intentionally
+      echo "⬇️ Step 2: Install Serverless CLI"
+      npm install -g serverless
+    displayName: Install Serverless
 
   - script: |
-      echo "This should NOT run"
-    displayName: Should Be Skipped
+      echo "🧪 Step 3: Deploying Lambda"
+      set -e  # Exit immediately if a command fails
+      sls deploy --stage dev
+    displayName: Deploy Lambda
