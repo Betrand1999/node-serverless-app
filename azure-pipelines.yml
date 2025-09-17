@@ -6,7 +6,7 @@ trigger: none
 pool:
   name: Default              
   demands:
-    - Agent.Name -equals ip-172-31-44-103
+    - Agent.Name -equals ip-172-31-44-103 # this specify if not it use any of the deafault
 
 variables:
   - group: aws-credentials
@@ -75,4 +75,4 @@ steps:
   
   - script: |
       sudo whoami
-      sudo cb
+     
