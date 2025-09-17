@@ -20,7 +20,7 @@ variables:
 steps:
   # ✅ Checkout source code
   - checkout: self
-    clean: true  
+    #clean: true  
 
   # ✅ Show Git branch name
   - script: |
@@ -66,7 +66,7 @@ steps:
       # npx serverless remove --stage $(STAGE) --region $(AWS_REGION)
     displayName: Deploy or Remove Serverless Stack
 
-    timeoutInMinutes: 3
+    #timeoutInMinutes: 3
 
     env:
       AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
