@@ -4,7 +4,7 @@ steps:
       if ! command -v sls >/dev/null; then
         if ! yum list installed nodejs >/dev/null 2>&1; then
           echo "Package nodejs is not installed. Installing nodejs first..."
-          sudo yum install -y nodejs22.x
+          sudo yum install -y nodejs
         fi
         echo "Installing serverless framework..."
         npm install -g serverless@2.72.3
