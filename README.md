@@ -95,3 +95,8 @@ dnf module list nodejs
 1. We can use node -v 18 with runtime 22 but it's not recommended
 
 2. Best Practice Match your local development version with your runtime version
+
+
+
+sudo rm -rf /usr/lib/node_modules
+sudo rm -rf /usr/local/lib/node_modules
