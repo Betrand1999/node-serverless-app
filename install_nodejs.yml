@@ -52,4 +52,5 @@ steps:
 # what is module here???
 # A module = a collection of RPMs bundled together into streams.
 # A module = a collection of RPMs bundled together into streams.
-# A stream = one version line (e.g., Node.js 16, Node.js 18, Node.js 20).
+# A stream = one version line (e.g., Node.js 16, Node.js 18, Node.js 20). 
+# 
