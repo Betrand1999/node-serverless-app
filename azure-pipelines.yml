@@ -30,7 +30,7 @@ steps:
   # ✅ Install Node.js
   - template: install_nodejs.yml
     parameters:
-      version: '18'
+      version: '22'
 
   # ✅ Install Serverless CLI
   - template: install_serverless.yml
