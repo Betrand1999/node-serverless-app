@@ -76,5 +76,5 @@ steps:
   - script: |
       sudo whoami
       sudo sls -v
-      sudo nvm -v
+      
 
