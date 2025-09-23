@@ -3,8 +3,10 @@ frameworkVersion: '3'
 
 provider:
   name: aws
-  runtime: nodejs18.x
+  runtime: nodejs20.x   # or nodejs18.x if you want to stay on 18
   region: us-east-1
+  httpApi:
+    cors: true          # ✅ enable CORS globally for httpApi
 
 functions:
   hello:
@@ -13,7 +15,6 @@ functions:
       - httpApi:
           path: /hello
           method: GET
-          cors: true   # ✅ Enables CORS so frontend can access Lambda 
 
 plugins:
   - serverless-plugin-typescript
