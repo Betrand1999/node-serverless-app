@@ -2,25 +2,25 @@
 # No need to uninstall 18 with this it would automaticallu upgrade to 22 
 
 
-# parameters:
-#   - name: version
-#     displayName: Choose and install nodejs in selected version
-#     type: string
+parameters:
+  - name: version
+    displayName: Choose and install nodejs in selected version
+    type: string
 
-# steps:
-#   - script: |
-#       if [ "$(node -v | sed -E 's/v([0-9]+)\..*/\1/')" != "${{ parameters.version }}" ]; then
-#         # sudo dnf module reset -y nodejs
-#         # sudo dnf module install -y nodejs:${{ parameters.version }}/common
-#         # sudo dnf module enable nodejs:${{ parameters.version }}/common
-#         curl -fsSL https://rpm.nodesource.com/setup_${{ parameters.version }}.x | sudo bash -
-#         sudo yum install -y nodejs
-#         sudo node -v
+steps:
+  - script: |
+      if [ "$(node -v | sed -E 's/v([0-9]+)\..*/\1/')" != "${{ parameters.version }}" ]; then
+        # sudo dnf module reset -y nodejs
+        # sudo dnf module install -y nodejs:${{ parameters.version }}/common
+        # sudo dnf module enable nodejs:${{ parameters.version }}/common
+        curl -fsSL https://rpm.nodesource.com/setup_${{ parameters.version }}.x | sudo bash -
+        sudo yum install -y nodejs
+        sudo node -v
 
-#       else
-#         echo "Nodejs version ${{ parameters.version }} is already installed."
-#       fi
-#     displayName: install nodejs ${{ parameters.version }}
+      else
+        echo "Nodejs version ${{ parameters.version }} is already installed."
+      fi
+    displayName: install nodejs ${{ parameters.version }}
 
 # Error: Problems in request:
 # missing groups or modules: nodejs:18/common but system's dnf module repo doesn't have nodejs:18 available.
@@ -31,22 +31,22 @@
 
 
 
-parameters:
-  - name: version
-    displayName: Choose and install nodejs in selected version
-    type: string
+# parameters:
+#   - name: version
+#     displayName: Choose and install nodejs in selected version
+#     type: string
 
-steps:
-  - script: |
-      if [ "$(node -v | sed -E 's/v([0-9]+)\..*/\1/')" != "${{ parameters.version }}" ]; then
-        sudo dnf module reset -y nodejs
-        sudo dnf module install -y nodejs:${{ parameters.version }}/common
-        sudo dnf module enable nodejs:${{ parameters.version }}/common
+# steps:
+#   - script: |
+#       if [ "$(node -v | sed -E 's/v([0-9]+)\..*/\1/')" != "${{ parameters.version }}" ]; then
+#         sudo dnf module reset -y nodejs
+#         sudo dnf module install -y nodejs:${{ parameters.version }}/common
+#         sudo dnf module enable nodejs:${{ parameters.version }}/common
 
-      else
-        echo "Nodejs version ${{ parameters.version }} is already installed."
-      fi
-    displayName: install nodejs ${{ parameters.version }}
+#       else
+#         echo "Nodejs version ${{ parameters.version }} is already installed."
+#       fi
+#     displayName: install nodejs ${{ parameters.version }}
 
 
 # what is module here???
