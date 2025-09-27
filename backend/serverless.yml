@@ -1,12 +1,12 @@
 service: node-serverless-project
-frameworkVersion: '3'
+frameworkVersion: "3"
 
 provider:
   name: aws
-  runtime: nodejs18.x   # or nodejs18.x if you want to stay on 18
+  runtime: nodejs18.x # or nodejs18.x if you want to stay on 18
   region: us-east-1
   httpApi:
-    cors: true          # ✅ enable CORS globally for httpApi
+    cors: true # ✅ enable CORS globally for httpApi ###
 
 functions:
   hello:
