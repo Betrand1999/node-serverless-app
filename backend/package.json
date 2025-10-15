@@ -1,15 +1,16 @@
 {
-    "name": "node-serverless-project",
-    "private": true,
-    "scripts": {
-      "deploy": "serverless deploy",
-      "remove": "serverless remove"
-    },
-    "devDependencies": {
-      "@types/aws-lambda": "^8.10.129",
-      "serverless": "^3.39.0",
-      "serverless-plugin-typescript": "^2.1.4",
-      "typescript": "^5.5.4"
-    }
+  "name": "node-serverless-project",
+  "private": true,
+  "scripts": {
+    "deploy": "serverless deploy",
+    "remove": "serverless remove",
+    "int-test": "mocha tests/integration"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.129",
+    "serverless": "^3.39.0",
+    "serverless-plugin-typescript": "^2.1.4",
+    "typescript": "^5.5.4",
+    "mocha": "^10.0.0"
   }
-  
+}
