@@ -4,7 +4,7 @@
   "scripts": {
     "deploy": "serverless deploy",
     "remove": "serverless remove",
-    "int-test": "mocha tests/integration"
+  "int-test": "npx mocha tests/integration"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.129",
