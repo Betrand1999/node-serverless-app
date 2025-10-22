@@ -6,6 +6,7 @@ provider:
   name: aws
   runtime: nodejs22.x
   region: us-east-1
+  stage: dev # ✅ added this line
   httpApi:
     cors: true
 
