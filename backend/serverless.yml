@@ -4,7 +4,7 @@ configValidationMode: error # Optional: Enables strict config checking # ONLY WO
 
 provider:
   name: aws
-  runtime: nodejs18.x
+  runtime: nodejs22.x
   region: us-east-1
   stage: dev # ✅ added this line
   httpApi:
@@ -27,7 +27,7 @@ custom:
     domainName: api.joinworldtech.com
     basePath: ""
     stage: ${self:provider.stage}
-    createRoute53Record: false # ✅ You've already created it manually, so set this to false
+    createRoute53Record: true # ✅ You've already created it manually, so set this to false
     endpointType: regional
     apiType: http
 # Error:
