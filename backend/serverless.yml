@@ -1,26 +1,6 @@
-# service: node-serverless-project
-# frameworkVersion: "3"
-
-# provider:
-#   name: aws
-#   runtime: nodejs22.x # or nodejs18.x if you want to stay on 18
-#   region: us-east-1
-#   httpApi:
-#     cors: true # ✅ enable CORS globally for httpAp
-
-# functions:
-#   hello:
-#     handler: handler.hello
-#     events:
-#       - httpApi:
-#           path: /hello
-#           method: GET
-
-# plugins:
-#   - serverless-plugin-typescript
 service: node-serverless-project
 frameworkVersion: "3"
-#configValidationMode: error # 👈 Strict config checking
+# configValidationMode: error # Optional: Enables strict config checking
 
 provider:
   name: aws
@@ -39,12 +19,13 @@ functions:
 
 plugins:
   - serverless-plugin-typescript
-  # - serverless-domain-manager
-# custom:
-#   customDomain:
-#     domainName: api.joinworldtech.com
-#     basePath: ''
-#     stage: ${self:provider.stage}
-#     createRoute53Record: true
-#     endpointType: regional
-#     apiType: http
+  - serverless-domain-manager
+
+custom:
+  customDomain:
+    domainName: api.joinworldtech.com
+    basePath: ""
+    stage: ${self:provider.stage}
+    createRoute53Record: false # ✅ You've already created it manually, so set this to false
+    endpointType: regional
+    apiType: http
