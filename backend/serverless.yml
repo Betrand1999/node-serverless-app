@@ -20,7 +20,7 @@
 #   - serverless-plugin-typescript
 service: node-serverless-project
 frameworkVersion: "3"
-configValidationMode: error   # 👈 Strict config checking
+configValidationMode: error # 👈 Strict config checking
 
 provider:
   name: aws
@@ -39,8 +39,7 @@ functions:
 
 plugins:
   - serverless-plugin-typescript
-  - serverless-domain-manager
-
+  # - serverless-domain-manager
 # custom:
 #   customDomain:
 #     domainName: api.joinworldtech.com
