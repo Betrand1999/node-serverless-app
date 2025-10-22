@@ -1,6 +1,6 @@
 service: node-serverless-project
 frameworkVersion: "3"
-configValidationMode: error # Optional: Enables strict config checking # ONLY WORK FOR node 18
+#configValidationMode: error # Optional: Enables strict config checking # ONLY WORK FOR node 18
 
 provider:
   name: aws
