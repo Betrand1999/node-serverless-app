@@ -30,3 +30,6 @@ custom:
     createRoute53Record: false # ✅ You've already created it manually, so set this to false
     endpointType: regional
     apiType: http
+# Error:
+# Serverless plugin "serverless-domain-manager" not found. Make sure it's installed and listed in the "plugins" section of your serverless config file. Run "serverless plugin install -n serverless-domain-manager" to install it.
+# npx serverless plugin install -n serverless-domain-manager
