@@ -1,10 +1,10 @@
 service: node-serverless-project
 frameworkVersion: "3"
-# configValidationMode: error # Optional: Enables strict config checking
+configValidationMode: error # Optional: Enables strict config checking # ONLY WORK FOR node 18
 
 provider:
   name: aws
-  runtime: nodejs22.x
+  runtime: nodejs18.x
   region: us-east-1
   stage: dev # ✅ added this line
   httpApi:
@@ -33,3 +33,29 @@ custom:
 # Error:
 # Serverless plugin "serverless-domain-manager" not found. Make sure it's installed and listed in the "plugins" section of your serverless config file. Run "serverless plugin install -n serverless-domain-manager" to install it.
 # npx serverless plugin install -n serverless-domain-manager
+
+### ADD A CUSTOM DOMAIN ###
+#  npx serverless plugin install -n serverless-domain-manager
+#  custom:
+#   customDomain:
+#     domainName: api.joinworldtech.com    # My registered domain
+#     basePath: ''                         # Empty for root path
+#     stage: dev                           # Must match deployment stage
+#     createRoute53Record: true            # Automatically create DNS record
+#     endpointType: regional               # Use 'regional' for HTTP APIs
+#     apiType: http                        # Use 'http' if using httpApi
+# Make sure the serverless-domain-manager plugin is added under the plugins section:
+# plugins:
+#   - serverless-plugin-typescript
+#   - serverless-domain-manager
+
+# next
+
+# 3. 🔐 Domain Setup (AWS)
+
+# I created a custom domain api.joinworldtech.com in API Gateway.
+
+# I issued an SSL certificate using AWS Certificate Manager (ACM) in us-east-1.
+#   add mapping to the api
+
+# I used Route 53 to manage the DNS alias record for joinworldtech.com, and allowed API Gateway to create the record (with createRoute53Record: true).
