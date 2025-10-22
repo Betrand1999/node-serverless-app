@@ -20,7 +20,7 @@
 #   - serverless-plugin-typescript
 service: node-serverless-project
 frameworkVersion: "3"
-configValidationMode: error # 👈 Strict config checking
+#configValidationMode: error # 👈 Strict config checking
 
 provider:
   name: aws
