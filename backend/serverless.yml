@@ -1,6 +1,6 @@
 service: node-serverless-project
 frameworkVersion: "3"
-#configValidationMode: error # Optional: Enables strict config checking # ONLY WORK FOR node 18
+# configValidationMode: error # Optional: Enables strict config checking # ONLY WORK FOR node 18
 
 provider:
   name: aws
@@ -20,16 +20,16 @@ functions:
 
 plugins:
   - serverless-plugin-typescript
-  - serverless-domain-manager
+#   - serverless-domain-manager
 
-custom:
-  customDomain:
-    domainName: api.joinworldtech.com
-    basePath: ""
-    stage: $default # 👈 Matches the default stage created by httpApi
-    createRoute53Record: true # ✅ You've already created it manually, so set this to false
-    endpointType: regional
-    apiType: http
+# custom:
+#   customDomain:
+#     domainName: api.joinworldtech.com
+#     basePath: ""
+#     stage: $default # 👈 Matches the default stage created by httpApi
+#     createRoute53Record: true # ✅ You've already created it manually, so set this to false
+#     endpointType: regional
+#     apiType: http
 # Error:
 # Serverless plugin "serverless-domain-manager" not found. Make sure it's installed and listed in the "plugins" section of your serverless config file. Run "serverless plugin install -n serverless-domain-manager" to install it.
 # npx serverless plugin install -n serverless-domain-manager
