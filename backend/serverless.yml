@@ -12,7 +12,7 @@ provider:
 
 functions:
   hello:
-    handler: handler.hello # hello comes form handler.ts and has to match. he handler in handler: handler.hello must match the file name handler.ts
+    handler: handler.helloo # hello comes form handler.ts and has to match. he handler in handler: handler.hello must match the file name handler.ts
     # It matches the compiled JavaScript file name, not necessarily the .ts
     events:
       - httpApi:
