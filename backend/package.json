@@ -1,10 +1,12 @@
+
 {
   "name": "node-serverless-project",
   "private": true,
   "scripts": {
     "deploy": "serverless deploy",
     "remove": "serverless remove",
-    "int-test": "npx mocha tests/integration"
+    "int-test": "npx mocha tests/integration",
+    "test": "npx mocha tests/unit"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.129",
