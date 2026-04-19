@@ -6,7 +6,7 @@ export const helloo = async (
   return {
     statusCode: 200,
     body: JSON.stringify({
-      message: 'Hello from Lambda! Successfully deployed using Node.js runtime 22 Using API custom domain Betrand '
+      message: 'Hello from Lambda! Successfully deployed using Node.js runtime 22 Using API custom domain Betrand is working '
     }),
   };
 };
