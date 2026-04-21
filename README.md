@@ -104,3 +104,12 @@ sudo rm -rf /usr/local/lib/node_modules
 
 
 git checkout -b dev ado/dev
+
+
+Work with GitHub
+git pull origin main
+git push origin main
+
+Work with Azure DevOps
+git pull ado main
+git push ado main
