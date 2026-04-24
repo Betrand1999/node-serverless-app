@@ -1,55 +1,53 @@
-# trigger:
-#   branches:
-#     include:
-#       - dev
+trigger:
+  branches:
+    include:
+      - dev
 
-# pr: none
+pr: none
 
-# pool:
-#   name: Default
+pool:
+  name: Default
 
-# resources:
-#   repositories:
-#     - repository: azure-pipeline
-#       type: git
-#       name: azure-pipeline
-#       ref: refs/heads/dev
+resources:
+  repositories:
+    - repository: azure-pipeline
+      type: git
+      name: azure-pipeline
+      ref: refs/heads/dev
 
-# variables:
-#   - group: aws-credentials
+variables:
+  - group: aws-credentials
 
-# parameters:
-#   - name: environment
-#     type: string
-#     default: dev
+parameters:
+  - name: environment
+    type: string
+    default: dev
 
-#   - name: awsRegion
-#     type: string
-#     default: us-east-1
+  - name: awsRegion
+    type: string
+    default: us-east-1
 
-#   - name: repository
-#     type: string
-#     default: self # IMPORTANT
+  - name: repository
+    type: string
+    default: self # IMPORTANT
 
-#   - name: runTests
-#     type: boolean
-#     default: true
+  - name: runTests
+    type: boolean
+    default: true
 
-#   - name: enableDeploy
-#     type: boolean
-#     default: true
+  - name: enableDeploy
+    type: boolean
+    default: true
 
-# extends:
-#   template: /templates/extends/backend_pipeline.yml@azure-pipeline
-#   parameters:
-#     environment: ${{ parameters.environment }}
-#     awsRegion: ${{ parameters.awsRegion }}
-#     repository: ${{ parameters.repository }}
-#     dnfPackages:
-#       - git
-#       - curl
-#       - unzip
-#     runTests: ${{ parameters.runTests }}
-#     enableDeploy: ${{ parameters.enableDeploy }}
-
-null
+extends:
+  template: /templates/extends/backend_pipeline.yml@azure-pipeline
+  parameters:
+    environment: ${{ parameters.environment }}
+    awsRegion: ${{ parameters.awsRegion }}
+    repository: ${{ parameters.repository }}
+    dnfPackages:
+      - git
+      - curl
+      - unzip
+    runTests: ${{ parameters.runTests }}
+    enableDeploy: ${{ parameters.enableDeploy }}
