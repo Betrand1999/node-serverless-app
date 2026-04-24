@@ -6,7 +6,7 @@ export const helloo = async (
   return {
     statusCode: 200,
     body: JSON.stringify({
-      message: 'Hello from Lambda! Successfully deployed Dev Branch Ngoh doing well'
+      message: 'Hello from Lambda! Successfully deployed Dev Branch 1'
     }),
   };
 };
