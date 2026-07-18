@@ -10,6 +10,8 @@ pool:
   demands:
     - Agent.Name -equals ip-172-31-68-41
 
+lockBehavior: sequential
+
 resources:
   repositories:
     - repository: azure-pipeline
