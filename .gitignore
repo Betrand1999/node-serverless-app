@@ -1,2 +1,14 @@
 s3-frontend/backend/node_modules/
 node_modules/
+# Serverless build artifacts
+.serverless/
+
+# Node modules
+node_modules/
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.*
