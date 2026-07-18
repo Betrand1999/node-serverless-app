@@ -6,8 +6,9 @@ trigger:
 pr: none
 
 pool:
-  name: ip-172-31-68-41
-lockBehavior: sequential
+  name: Default
+  demands:
+    - Agent.Name -equals ip-172-31-68-41
 
 resources:
   repositories:
