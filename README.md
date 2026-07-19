@@ -9,7 +9,7 @@ It lets you run Node.js packages without installing them globally.
 
 
 sls --version
-#####################################################################
+####################################################################
 
 
 Serverless Deployment Command
